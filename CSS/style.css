@@ -1,0 +1,105 @@
+*{
+  padding: 0%;
+  margin: 0%;
+}
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 1000px;
+  margin: 0px;
+  padding: 10px;
+  background-color: rgb(80, 78, 78);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card{
+  background-color: #646262d0 ;
+  color: white ;
+  padding: 20px;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 420px;
+  margin: 100px 0px;
+  height: min-content;
+}
+
+.btn{
+  font-size: 25px;
+  border: 0px;
+  margin: 5px;
+  border-radius: 50%;
+  color: white;
+  background-color: #646262d0 ; ;
+}
+
+.btn:hover{
+  color: white;
+  background-color: rgb(8, 8, 8);
+  transition: 0.3 ease-in-out;
+}
+
+input[type="text"]{
+  border: 2px solid white;
+  outline: none;
+  padding: 5px;
+  border-radius: 30px;
+  background-color: rgb(83, 82, 82);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  width: 80%;
+  text-transform: capitalize;
+}
+
+.search{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 60%;
+}
+
+.description{
+  text-transform: capitalize;
+  margin-left: 5px;
+}
+
+.cloud{
+  display: flex;
+  align-items: center;
+  
+}
+
+
+.temp{
+  margin: 20px 0px;
+}
+
+.humidity,.wind,.cloud{
+  font-size: 20px;
+}
+
+.weather.load{
+  visibility: hidden;
+}
+
+.weather.load::after{
+  visibility: visible;
+  content: "Loading...";
+  color: white;
+  font-size: 30px;
+  margin-left: 30px;
+  font-weight: bold;
+}
+
+footer{
+  background-color: #646262d0 ;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
