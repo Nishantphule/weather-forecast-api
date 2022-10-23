@@ -4,9 +4,8 @@ function apikey(){
 }
 
 async function weatherFetch(city){
-  const  weather =  fetch("https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=" + apikey())
-  const response = await weather
-  const res = await response.json()
+  const  weather =  await fetch("https://api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=" + apikey())
+  const res = await weather.json()
     const { name } = res;
     const { country } = res.sys
     const { icon, description } = res.weather[0];
@@ -21,8 +20,8 @@ async function weatherFetch(city){
     document.querySelector(".description").innerText = description;
     document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
     document.querySelector(".wind").innerText = "Wind speed: "+ speed +" km/h";
-    document.querySelector(".weather").classList.remove("load")
     document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900?"+ name +" ')"
+    document.querySelector(".weather").classList.remove("load")
 }
 
 
