@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+
+    <!-- boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- external css -->
     <link rel="stylesheet" href="/CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>API TASK 3 DAY-20</title>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Weather Forecast Api</title>
 </head>
+
 <body>
+    <!-- city search input -->
     <div class="search">
         <input type="text" class="search-bar" placeholder="Search City">
         <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
 
-    <div class="card">  
-        <div class="weather load">
+    <!-- card component for displaying weather -->
+    <div class="card">
+        <div class="weather">
             <h2 class="city"></h2>
             <h3 class="country"></h3>
             <h1 class="temp"></h1>
             <div class="cloud">
                 <img class="pic" src="https://openweathermap.org/img/wn/01n.png" alt="Clear" />
                 <div class="description"></div>
-            </div>   
+            </div>
             <div class="humidity"></div>
             <div class="wind"></div>
         </div>
-        
-    </div>         
+    </div>
+    
+    <!-- footer -->
     <footer>Created By Nishant@ 2022</footer>
-    <script src="/JS/jquery-3.6.0.min.js"></script>
-    <script src="/JS/bootstrap.min.js"></script>
+
+    <!-- jquery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+
+
+    <!-- external js -->
     <script src="/JS/script.js"></script>
 </body>
+
 </html>
 
