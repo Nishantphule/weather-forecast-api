@@ -59,16 +59,13 @@ document.querySelector(".btn").addEventListener('click', async (e) => {
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(async function(position){
     if(position){
-      const {lat,lon} = position.coords
-      console.log(lat,lon)
-      const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}` + "&appid=" + apikey())
+      const {latitude,longitude} = position.coords
+      console.log(position.coords)
+      const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}` + "&appid=" + apikey())
 
       const res = await weather.json()
-      
-      
-      
-      weatherFetch(position.city);
-      console.log(position)
+      const {name} = res
+      console.log(name)
     }
     else{
       weatherFetch("Delhi")
