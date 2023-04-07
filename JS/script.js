@@ -60,19 +60,20 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(async function(position){
     if(position){
       const {latitude,longitude} = position.coords
-      console.log(position.coords)
+      
       const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}` + "&appid=" + apikey())
 
       const res = await weather.json()
+      
       const {name} = res
-      console.log(name)
+      weatherFetch(name)
     }
     else{
       weatherFetch("Delhi")
     }
   });
 }
-weatherFetch("Delhi")
+
 
 
 
