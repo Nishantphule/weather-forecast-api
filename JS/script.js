@@ -1,6 +1,6 @@
 // api key
 function apikey() {
-  return 'af65dba03e23ccd4e60c1594d9f6839f'
+  return 'f4049656624f8252a31c89dda51daa4b'
 }
 
 // weather fetching using city name from input
@@ -38,16 +38,35 @@ async function weatherFetch(city) {
 }
 
 // btn event listener
-document.querySelector(".btn").addEventListener('click', () => {
-  weatherFetch(document.querySelector(".search-bar").value);
-})
+document.querySelector(".btn").addEventListener('click', async (e) => {
+  e.preventDefault()
+  const city = document.querySelector(".search-bar").value
 
-// enter key event listener
-document.querySelector(".search-bar").addEventListener("keyup", (e) => {
-  if (e.key == "Enter") {
-    weatherFetch(document.querySelector(".search-bar").value);
+  const weather = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apikey())
+
+  const data = await weather.json()
+
+  if (data.cod === 200) {
+    weatherFetch(city);
   }
+  else {
+    document.querySelector(".search-bar").value = "City Not Found"
+  }
+
+
 })
 
-weatherFetch("Nashik");
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position){
+    if(position){
+      weatherFetch(position.city);
+    }
+    else{
+      weatherFetch("Delhi")
+    }
+  });
+}
+// weatherFetch("Delhi")
+
+
 
