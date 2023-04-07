@@ -21,7 +21,7 @@ async function weatherFetch(city) {
   const res = await weather.json()
   // manipulating weather details in html elements
   const { name } = res;
-  const { country } = res.sys
+  const { country } = res.sys;
   const { icon, description } = res.weather[0];
   const { temp, humidity } = res.main;
   const { speed } = res.wind;
@@ -57,8 +57,16 @@ document.querySelector(".btn").addEventListener('click', async (e) => {
 })
 
 if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position){
+  navigator.geolocation.getCurrentPosition(async function(position){
     if(position){
+      const {lat,lon} = position.coords
+      console.log(lat,lon)
+      const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}` + "&appid=" + apikey())
+
+      const res = await weather.json()
+      
+      
+      
       weatherFetch(position.city);
       console.log(position)
     }
