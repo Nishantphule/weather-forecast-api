@@ -60,13 +60,14 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position){
     if(position){
       weatherFetch(position.city);
+      console.log(position)
     }
     else{
       weatherFetch("Delhi")
     }
   });
 }
-// weatherFetch("Delhi")
+weatherFetch("Delhi")
 
 
 
