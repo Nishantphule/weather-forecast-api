@@ -1,4 +1,4 @@
-body{
+body {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,9 +14,9 @@ body{
 
 
 /* card style */
-.card{
-  background-color: #646262d0 ;
-  color: white ;
+.card {
+  background-color: #646262d0;
+  color: white;
   padding: 20px;
   border-radius: 30px;
   width: 100%;
@@ -27,16 +27,17 @@ body{
 
 
 /* button style */
-.btn{
+.btn {
   font-size: 25px;
   border: 0px;
   margin: 5px;
   border-radius: 50%;
   color: white;
-  background-color: #646262d0 ; ;
+  background-color: #646262d0;
+  ;
 }
 
-.btn:hover{
+.btn:hover {
   color: white;
   background-color: rgb(8, 8, 8);
   transition: 0.3 ease-in-out;
@@ -44,7 +45,7 @@ body{
 
 
 /* input styling */
-input[type="text"]{
+input[type="text"] {
   border: 2px solid white;
   outline: none;
   padding: 5px;
@@ -57,7 +58,7 @@ input[type="text"]{
   text-transform: capitalize;
 }
 
-.search{
+.search {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,28 +68,30 @@ input[type="text"]{
 
 
 /* weather details styling */
-.description{
+.description {
   text-transform: capitalize;
   margin-left: 5px;
 }
 
-.cloud{
+.cloud {
   display: flex;
   align-items: center;
 }
 
-.temp{
+.temp {
   margin: 20px 0px;
 }
 
-.humidity,.wind,.cloud{
+.humidity,
+.wind,
+.cloud {
   font-size: 20px;
 }
 
 
 /* footer */
-footer{
-  background-color: #646262d0 ;
+footer {
+  background-color: #646262d0;
 
   font-size: 20px;
   font-weight: bold;
