@@ -1,11 +1,4 @@
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 1000px;
-  margin: 0px;
-  padding: 10px;
   background-color: rgb(80, 78, 78);
   background-position: center;
   background-repeat: no-repeat;
@@ -96,4 +89,25 @@ footer {
   font-size: 20px;
   font-weight: bold;
   color: black;
+}
+
+
+/* history div */
+#searchHistory ul{
+  list-style-type: none;
+}
+
+
+/* history div */
+#searchHistory ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+#searchHistory{
+  max-height: 50px;
+  overflow-y: scroll;
+  cursor: pointer;
 }

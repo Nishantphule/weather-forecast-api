@@ -3,15 +3,29 @@ function apikey() {
   return 'f4049656624f8252a31c89dda51daa4b'
 }
 
-let historyData = []
-localStorage.setItem('historyData',historyData)
-
-function addhistoryData(city){
-  let newHistorydata = localStorage.getItem('historyData')
-  newHistorydata+=`${city} `
-  localStorage.setItem('historyData',  newHistorydata)
-  return data = newHistorydata.split(" ").filter((city) => city)
+let historyData = [];
+try {
+  let history = localStorage.getItem("historyData");
+  if (history) {
+    historyData = JSON.parse(history)
+  }
 }
+catch (error) {
+  console.error(error)
+}
+localStorage.setItem('historyData', historyData)
+
+
+// add city to search history
+// function addhistoryData(city) {
+//   let newHistorydata = localStorage.getItem('historyData')
+//   newHistorydata += `${city} `
+//   localStorage.setItem('historyData', newHistorydata)
+//   return newHistorydata.split(" ").filter((city) => city)
+// }
+
+const historyDiv = document.getElementById("searchHistory")
+
 
 // weather fetching using city name from input
 async function weatherFetch(city) {
@@ -49,14 +63,14 @@ async function weatherFetch(city) {
     document.querySelector(".description").innerText = description;
     document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
     document.querySelector(".wind").innerText = "Wind speed: " + speed + " km/h";
-    document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900?" + city + " ')"
+    document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900?weather/" + city + " ')"
   } catch (error) {
     console.error("error fetching weather data")
   }
-
-
 }
 
+
+// search btn
 // btn event listener
 document.querySelector(".btn").addEventListener('click', async (e) => {
   e.preventDefault()
@@ -69,7 +83,11 @@ document.querySelector(".btn").addEventListener('click', async (e) => {
   if (data.cod === 200) {
     document.querySelector(".search-bar").value = ""
     weatherFetch(city)
-    addhistoryData(city);
+    if (city) {
+      historyData.push(city);
+      localStorage.setItem("historyData", JSON.stringify(historyData));
+      updateSearchHistory();
+    }
   }
   else {
     window.alert("City Not Found")
@@ -79,6 +97,33 @@ document.querySelector(".btn").addEventListener('click', async (e) => {
 
 })
 
+function updateSearchHistory() {
+  document.getElementById("searchHistory").innerHTML = ""
+  const list = document.createElement("ul")
+  historyData = historyData.reduce((pre, cur) => {
+    if (!pre.includes(cur)) {
+      return [...pre, cur];
+    }
+    else {
+      return pre
+    }
+  }, [])
+  localStorage.setItem("historyData", JSON.stringify(historyData));
+  historyData.forEach(element => {
+    const listItem = document.createElement("li")
+
+    listItem.innerHTML = element
+    listItem.addEventListener("click", (e) => {
+      document.querySelector(".search-bar").value = e.target.textContent
+      weatherFetch(e.target.textContent)
+    })
+    list.appendChild(listItem)
+  });
+  historyDiv.appendChild(list)
+}
+
+
+// enter key to search
 document.querySelector(".search-bar").addEventListener('keypress', async (e) => {
   if (e.key === "Enter") {
     e.preventDefault()
@@ -92,16 +137,22 @@ document.querySelector(".search-bar").addEventListener('keypress', async (e) => 
     if (data.cod === 200) {
       document.querySelector(".search-bar").value = ""
       weatherFetch(city);
-      addhistoryData(city);
+      if (city) {
+        historyData.push(city);
+        
+        updateSearchHistory();
+      }
     }
     else {
       window.alert("City Not Found")
       document.querySelector(".search-bar").value = ""
     }
+
   }
 })
 
 
+// to get default location
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(async function (position) {
     if (position) {
@@ -120,5 +171,5 @@ if (navigator.geolocation) {
   });
 }
 
-
+weatherFetch("Delhi")
 
